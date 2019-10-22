@@ -16,7 +16,47 @@ $(document).ready(function () {
         $("#start-button").css("display", "none");
         $(".trivia-questions").css("display", "initial");
         updateTriviaBox();
-    })
+    });
+
+    $(".button-choices").on("click", function () {
+        console.log("b:button-choices - START");
+        switch ($(this).attr('id')) {
+            case "choice1":
+                choiceComputer($(this).val(), $(this).attr('answer'));
+            case "choice2":
+                choiceComputer($(this).val(), $(this).attr('answer'));
+            case "choice3":
+                choiceComputer($(this).val(), $(this).attr('answer'));
+            case "choice4":
+                choiceComputer($(this).val(), $(this).attr('answer'));
+        }
+    });
+
+    function showAnswer() {
+        console.log("f:showAnswer - START");
+        $(".trivia-questions").css("display", "none");
+        $(".show-answers").css("display", "initial");
+    }
+
+    function updateScore() {
+
+    }
+
+    function choiceComputer(choice, answer) {
+        console.log("f:choiceComputer - START");
+        showAnswer();
+        if (choice == answer) {
+            $("#right-wrong").text("YOU ARE CORRECT!!!");
+        }
+        else {
+            $("#right-wrong").text("YOU ALMOST HAD IT!!!");
+            $("#correct-answer").text("THE CORRECT ANSWER IS " + answer);
+        }
+    }
+
+    // function isCorrect(choice, answer) {
+    //     return choice == answer;
+    // }
 
     function updateTriviaBox() {
         console.log("f:updateTriviaBox - START");
@@ -33,26 +73,18 @@ $(document).ready(function () {
         console.log("f:fillChoices - START");
         // for (x in questions.length) {
         for (y = 1; y < 5; y++) {
-            console.log("y = " + y);
-            console.log("choices y-1 = " + choices[y - 1]);
-            console.log("questions 0 y = " + questions[0][y]);
+            // console.log("y = " + y);
+            // console.log("choices y-1 = " + choices[y - 1]);
+            // console.log("questions 0 y = " + questions[0][y]);
             $(choices[y - 1]).text(questions[0][y]);
+            $(choices[y - 1]).attr("value", questions[0][y]);
+            $(choices[y - 1]).attr("answer", questions[0][5]);
+            console.log("value: " + $(choices[y - 1]).val());
+            console.log("answer: " + $(choices[y - 1]).attr("answer"));
         }
         // }
 
-        // for (x = 0; x < 2; x++) {
-        //     let div = $("<div>");
-        //     div.addClass("col-mg-6 pd-5 mg-5");
-        //     div.text(questions[1].Choices[x])
-        //     $(".row1").append(div);
-        //     console.log($(".row1"));
-        // }
-        // for (x = 2; x < 4; x++) {
-        //     let div = $("<p>");
-        //     div.addClass("col-mg-6");
-        //     div.text(questions[1].Choices[x])
-        //     $(".row2").append(div);
-        // }
+
         console.log("f:fillChoices - END");
     }
 
