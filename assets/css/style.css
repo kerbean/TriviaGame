@@ -5,3 +5,15 @@
 .show-answers{
     display:none;
 }
+
+.end-screen{
+    display:none;
+}
+
+body{
+    background:pink;
+}
+
+.jumbotron{
+    background: khaki;
+}

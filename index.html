@@ -6,22 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>TRIVIA GAME</title>
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
     <script src="assets/javascript/app.js"></script>
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
 </head>
 
 <body>
     <div class="container">
         <div class="jumbotron text-center mt-3">
-            <h1 class="display-4">Totally Trivial Trivia!!</h1>
+            <h1 class="display-4 font-weight-bold">Totally Trivial Trivia!!</h1>
             <hr class="my-4">
             <button id="start-button" class="start-button px-5 py-3 my-5">START!</button>
             <div class="trivia-questions">
+                <div class="position-absolute">
+                    <p class="float-left">Time left to answer:</p>
+                    <p id="timer" class="text-left float-left text-danger font-weight-bold"></p>
+                </div>
                 <p id="question" class="questions px-5 py-3 my-5"></p>
                 <div class="choices px-5 py-3 my-5">
                     <div class="row row1 ">
@@ -38,6 +41,12 @@
                 <p id="right-wrong" class="px-5 py-3 my-5"></p>
                 <p id="correct-answer" class="px-5 py-3 my-5"></p>
             </div>
+            <div class="end-screen">
+                <p>All Questions Have Been Exhausted. Restart the game to get another set of questions.</p>
+                <ul class="scores mt-5 text-center"></ul>
+                <button class="reset-game mt-5">RESTART GAME</button>
+            </div>
+            <div id="next-timer" class="next-timer text-center mt-5"></div>
         </div>
     </div>
 </body>
